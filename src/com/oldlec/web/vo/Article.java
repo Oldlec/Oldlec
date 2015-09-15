@@ -2,7 +2,7 @@ package com.oldlec.web.vo;
 
 import java.util.Date;
 
-public class Articles {
+public class Article {
 	private int No;
 	private String Title;
 	private String Content;
@@ -12,6 +12,15 @@ public class Articles {
 	private int CategoryNo;
 	private int UserNo;
 	private boolean IsValid;
+	
+	
+	
+	/* values for ArticleView */
+	private String Nickname;
+	private int cntCmnt;
+	private int cntLiked;
+	private int cntNotLiked;
+	
 	
 	public int getNo() {
 		return No;
@@ -66,5 +75,29 @@ public class Articles {
 	}
 	public void setIsValid(boolean isValid) {
 		IsValid = isValid;
+	}
+	public String getNickname() {
+		return Nickname;
+	}
+	public void setNickname(String nickname) {
+		Nickname = nickname;
+	}
+	public int getCntCmnt() {
+		return cntCmnt;
+	}
+	public void setCntCmnt(int cntCmnt) {
+		this.cntCmnt = cntCmnt;
+	}
+	public int getCntLiked() {
+		return cntLiked;
+	}
+	public void setCntLiked(int cntLiked) {
+		this.cntLiked = cntLiked;
+	}
+	public int getCntNotLiked() {
+		return cntNotLiked;
+	}
+	public void setCntNotLiked(int cntNotLiked) {
+		this.cntNotLiked = cntNotLiked;
 	}
 }
