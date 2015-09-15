@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- xmlns : ?? 없넹 접두사 .. 무명의 접두사가 있다. 그래서 이 파일 에서 주로 쓰는 파서의 접두사를 지우고 싶다 -->
+<beans:beans 
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="
+    		http://www.springframework.org/schema/beans
+        	http://www.springframework.org/schema/beans/spring-beans.xsd
+        	http://www.springframework.org/schema/mvc
+        	http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        	http://www.springframework.org/schema/context
+        	http://www.springframework.org/schema/context/spring-context.xsd
+        	http://www.springframework.org/schema/security
+         	http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<beans:bean 
+   		 id="oldlecAuthenticationSuccessHandler" 
+    	 class="com.oldlec.web.controller.OldlecAuthenticationSuccessHandler"></beans:bean> 
+
+
+	<http>
+		<!-- <form-login login-page="/basic/login"
+            default-target-url="/community/article-list"/> -->
+            
+            <form-login login-page="/basic/login"
+            default-target-url="/main/index"
+            authentication-failure-url="/basic/temp"
+            authentication-success-handler-ref="oldlecAuthenticationSuccessHandler"
+            />
+	
+		<logout logout-success-url ="/basic/login"/>
+
+		<intercept-url pattern="/community/write-article" access="ROLE_USER"/>
+		
+	</http>
+		<!-- /ADMIN 이런거 많이함 -->
+		<!-- 핸들러!! 로그인 후 라우팅 -->
+	
+	<!-- <authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+			users-by-username-query="
+				SELECT Uid USERID, Pwd PASSWORD, IsValid ENABLED
+				FROM Users
+				WHERE Uid=?
+			"
+			
+			authorities-by-username-query="
+				SELECT Uid USERID, RoleName AUTHORITIES
+				FROM UserRoles
+				WHERE Uid=?
+			"/>
+		</authentication-provider>
+	</authentication-manager> -->
+	
+		<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+			users-by-username-query="
+				SELECT Identification USERID, Pwd PASSWORD, IsValid ENABLED
+				FROM Users
+				WHERE Identification=?
+			"
+			authorities-by-username-query="
+				SELECT Identification USERID, RoleName AUTHORITIES
+				FROM UsersRolesTmp
+				WHERE Identification=?
+			"/>
+		</authentication-provider>
+	</authentication-manager>
+	
+
+</beans:beans>
