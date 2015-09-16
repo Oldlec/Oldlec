@@ -35,5 +35,5 @@
 	
 	
 	<bean id="userDao" class="com.oldlec.web.dao.mybatis.MyBatisUserDao" />
-
+	<bean id="articleDao" class="com.oldlec.web.dao.mybatis.MyBatisArticleDao" />
 </beans>

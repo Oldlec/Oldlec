@@ -3,85 +3,88 @@ package com.oldlec.web.vo;
 import java.util.Date;
 
 public class Article {
-	private int No;
-	private String Title;
-	private String Content;
-	private int View;
-	private Date RegDate;
-	private Date ModDate;
-	private int CategoryNo;
-	private int UserNo;
-	private boolean IsValid;
+	private int no;
+	private String title;
+	private String content;
+	private int view;
+	private Date regDate;
+	private Date modDate;
+	private int categoryNo;
+	private int userNo;
+	private boolean isValid;
 	
 	
 	
 	/* values for ArticleView */
-	private String Nickname;
+	private String writerName;
 	private int cntCmnt;
 	private int cntLiked;
 	private int cntNotLiked;
 	
+
+
 	
 	public int getNo() {
-		return No;
+		return no;
 	}
 	public void setNo(int no) {
-		No = no;
+		this.no = no;
 	}
 	public String getTitle() {
-		return Title;
+		return title;
 	}
 	public void setTitle(String title) {
-		Title = title;
+		this.title = title;
 	}
 	public String getContent() {
-		return Content;
+		return content;
 	}
 	public void setContent(String content) {
-		Content = content;
+		this.content = content;
 	}
 	public int getView() {
-		return View;
+		return view;
 	}
 	public void setView(int view) {
-		View = view;
+		this.view = view;
 	}
 	public Date getRegDate() {
-		return RegDate;
+		return regDate;
 	}
 	public void setRegDate(Date regDate) {
-		RegDate = regDate;
+		this.regDate = regDate;
 	}
 	public Date getModDate() {
-		return ModDate;
+		return modDate;
 	}
 	public void setModDate(Date modDate) {
-		ModDate = modDate;
+		this.modDate = modDate;
 	}
 	public int getCategoryNo() {
-		return CategoryNo;
+		return categoryNo;
 	}
 	public void setCategoryNo(int categoryNo) {
-		CategoryNo = categoryNo;
+		this.categoryNo = categoryNo;
 	}
 	public int getUserNo() {
-		return UserNo;
+		return userNo;
 	}
 	public void setUserNo(int userNo) {
-		UserNo = userNo;
+		this.userNo = userNo;
 	}
-	public boolean isIsValid() {
-		return IsValid;
+	public boolean isValid() {
+		return isValid;
 	}
-	public void setIsValid(boolean isValid) {
-		IsValid = isValid;
+	public void setValid(boolean isValid) {
+		this.isValid = isValid;
 	}
-	public String getNickname() {
-		return Nickname;
+	public String getWriterName() {
+		return writerName;
 	}
-	public void setNickname(String nickname) {
-		Nickname = nickname;
+	public void setWriterName(String writerName) {
+		this.writerName = writerName;
 	}
+
 	public int getCntCmnt() {
 		return cntCmnt;
 	}
@@ -100,4 +103,8 @@ public class Article {
 	public void setCntNotLiked(int cntNotLiked) {
 		this.cntNotLiked = cntNotLiked;
 	}
+	
+	
+	
+	
 }
