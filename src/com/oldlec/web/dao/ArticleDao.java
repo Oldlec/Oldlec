@@ -13,4 +13,6 @@ public interface ArticleDao {
 	public Article getArticle(int no);
 	public int getTotal();
 	
+	
+	public int writeArticle(Article newArticle);
 }

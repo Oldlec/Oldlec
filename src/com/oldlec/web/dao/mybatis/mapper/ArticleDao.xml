@@ -10,7 +10,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	
 	public Article getArticle(int no);
-	public int getTotal(); -->
+	public int getTotal();
+	public int writeArticle(Article newArticle);
+	 -->
    	
    		
 	<select id="getArticles" parameterType="hashmap" resultType = "com.oldlec.web.vo.Article">
@@ -36,5 +38,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			SELECT rows FROM sysindexes WHERE indid<2 AND id=object_id('[Articles]')
  		]]>
  	</select>
+ 	
+ 	<insert id="writeArticle" parameterType="com.oldlec.web.vo.Article">
+ 		INSERT INTO Articles(
+			No,
+			CategoryNo,
+			UserNo,
+			Title,
+			Content
+		)
+		VALUES(
+			${no},
+			${categoryNo},
+			#{userNo},
+			#{title},
+			#{content}
+		);
+ 			
+ 	</insert>
+ 	
  
 </mapper>

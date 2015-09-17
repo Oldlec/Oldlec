@@ -44,4 +44,15 @@ public class MyBatisArticleDao implements ArticleDao{
 		return total;
 	}
 
+	@Override
+	public int writeArticle(Article newArticle) {
+		
+		ArticleDao dao = session.getMapper(ArticleDao.class);
+		int result = dao.writeArticle(newArticle);
+		return result;
+	}
+
+	
+	
+	
 }
