@@ -30,7 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	   
 	<select id="getArticle" resultType = "com.oldlec.web.vo.Article">
-		SELECT * FROM ArticleView WHERE IntId = #{no,jdbcType=NUMERIC}
+		SELECT * FROM ArticleView WHERE No = #{no,jdbcType=NUMERIC}
 	</select>
  
  	<select id="getTotal" resultType = "int">

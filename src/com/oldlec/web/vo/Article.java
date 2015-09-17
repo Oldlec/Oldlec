@@ -1,6 +1,9 @@
 package com.oldlec.web.vo;
 
 import java.util.Date;
+import java.util.List;
+
+import com.oldlec.web.vo.Comment;
 
 public class Article {
 	private int no;
@@ -21,8 +24,14 @@ public class Article {
 	private int cntLiked;
 	private int cntNotLiked;
 	
+	
+	
+	/**to get article's comment */
+	private List<Comment> commentsOfThis;
 
-
+	
+	
+	
 	
 	public int getNo() {
 		return no;
@@ -102,6 +111,12 @@ public class Article {
 	}
 	public void setCntNotLiked(int cntNotLiked) {
 		this.cntNotLiked = cntNotLiked;
+	}
+	public List<Comment> getCommentsOfThis() {
+		return commentsOfThis;
+	}
+	public void setCommentsOfThis(List<Comment> commentsOfThis) {
+		this.commentsOfThis = commentsOfThis;
 	}
 	
 	

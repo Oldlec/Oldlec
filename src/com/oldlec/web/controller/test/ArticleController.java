@@ -85,9 +85,6 @@ public class ArticleController {
 		}
 		
 
-		
-		
-		
 		model.addAttribute("articleList",articleList);
 		model.addAttribute("currentPage",currentPage);
 		model.addAttribute("tenByTenStart",tenByTenStart);
@@ -95,12 +92,32 @@ public class ArticleController {
 		model.addAttribute("total",total);
 		model.addAttribute("status",status);
 		
-		return "/WEB-INF/view/article/ArticleList.jsp";
+
+		
+		return "/WEB-INF/view/article/article-list.jsp";
 	}
 	
 	
-	
-	
+	@RequestMapping(value="article-detail", method=RequestMethod.GET)
+	public String articleDetail(Model model, HttpServletRequest request){
+		
+		String _articleNo = request.getParameter("articleNo");
+		int articleNo=-1;
+		
+		if(_articleNo!=null){
+			articleNo = Integer.parseInt(_articleNo);
+		}else{
+			return "";
+		}
+		
+		Article article = adao.getArticle(articleNo);
+		model.addAttribute("article", article);
+
+		
+		return "/WEB-INF/view/article/article-detail.jsp";
+	}
+	/*note return 문에 쓰이는 jsp파일의 경우 카멜표기법으로 파일이름 작성시 오류남? 경험
+	 * 못찾음*/
 	
 	
 	@RequestMapping(value="insertSample", method=RequestMethod.GET)

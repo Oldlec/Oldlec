@@ -1,12 +1,12 @@
 package com.oldlec.web.dao.mybatis;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.oldlec.web.dao.ArticleDao;
+import com.oldlec.web.dao.CommentDao;
 import com.oldlec.web.vo.Article;
 
 
@@ -15,6 +15,8 @@ public class MyBatisArticleDao implements ArticleDao{
 	@Autowired
 	private SqlSession session;
 	
+	@Autowired
+	private CommentDao cdao;
 	
 	@Override
 	public List<Article> getArticles(int page, String column, String keyword) {
@@ -34,6 +36,10 @@ public class MyBatisArticleDao implements ArticleDao{
 		
 		ArticleDao dao = session.getMapper(ArticleDao.class);
 		Article article = dao.getArticle(no);
+		
+		/*wiring comments*/
+		article.setCommentsOfThis(cdao.getComments(no));
+		
 		return article;
 	}
 

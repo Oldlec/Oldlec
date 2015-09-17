@@ -35,7 +35,7 @@
 				<c:forEach var="article" items="${articleList}">
 					<tr>
 						<td class="seq">${article.no}</td>
-						<td class="title"><a href="boardDetail?detail=${article.no}" />${article.title}
+						<td class="title"><a href="article-detail?articleNo=${article.no}" />${article.title}
 							[${article.cntCmnt }]</td>
 						<td class="writer">${article.writerName}</td>
 						<td class="regdate"><fmt:formatDate
