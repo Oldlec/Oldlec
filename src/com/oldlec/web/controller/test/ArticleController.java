@@ -141,5 +141,11 @@ public class ArticleController {
 	}
 	
 	
+	@RequestMapping(value="article-write", method=RequestMethod.GET)
+	public String writeArticle(){
+		
+		return "/WEB-INF/view/article/article-write.jsp";
+	}
+	
 	
 }
