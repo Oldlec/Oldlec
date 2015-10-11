@@ -8,10 +8,12 @@ public interface ArticleDao {
 	
 	
 	public List<Article> getArticles(int page, String column, String keyword);
-
+	public int getTotalOfArticles(String column, String keyword);
+	
+	
 	
 	public Article getArticle(int no);
-	public int getTotal();
+	
 	
 	
 	public int writeArticle(Article newArticle);

@@ -1,14 +1,15 @@
 package com.oldlec.web.vo;
 
 public class UserRole {
-	private int No;
+	private int UserNo;
 	private String RoleName;
 	
-	public int getNo() {
-		return No;
+
+	public int getUserNo() {
+		return UserNo;
 	}
-	public void setNo(int no) {
-		No = no;
+	public void setUserNo(int userNo) {
+		UserNo = userNo;
 	}
 	public String getRoleName() {
 		return RoleName;

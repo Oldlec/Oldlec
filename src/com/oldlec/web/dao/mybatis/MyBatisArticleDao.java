@@ -43,18 +43,21 @@ public class MyBatisArticleDao implements ArticleDao{
 		return article;
 	}
 
-	@Override
-	public int getTotal() {
-		ArticleDao dao = session.getMapper(ArticleDao.class);
-		int total = dao.getTotal();
-		return total;
-	}
+
 
 	@Override
 	public int writeArticle(Article newArticle) {
 		
 		ArticleDao dao = session.getMapper(ArticleDao.class);
 		int result = dao.writeArticle(newArticle);
+		return result;
+	}
+
+	@Override
+	public int getTotalOfArticles(String column, String keyword) {
+		
+		ArticleDao dao = session.getMapper(ArticleDao.class);
+		int result = dao.getTotalOfArticles(column, keyword);
 		return result;
 	}
 

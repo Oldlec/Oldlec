@@ -12,7 +12,7 @@ public class Article {
 	private int view;
 	private Date regDate;
 	private Date modDate;
-	private int categoryNo;
+
 	private int userNo;
 	private boolean isValid;
 	
@@ -69,12 +69,7 @@ public class Article {
 	public void setModDate(Date modDate) {
 		this.modDate = modDate;
 	}
-	public int getCategoryNo() {
-		return categoryNo;
-	}
-	public void setCategoryNo(int categoryNo) {
-		this.categoryNo = categoryNo;
-	}
+
 	public int getUserNo() {
 		return userNo;
 	}

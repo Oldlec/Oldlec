@@ -25,15 +25,15 @@
 		<!-- <form-login login-page="/basic/login"
             default-target-url="/community/article-list"/> -->
             
-            <form-login login-page="/basic/login"
+            <form-login login-page="/account/login"
             default-target-url="/main/index"
-            authentication-failure-url="/basic/temp"
+            authentication-failure-url="/acocunt/login"
             authentication-success-handler-ref="oldlecAuthenticationSuccessHandler"
             />
 	
 		<logout logout-success-url ="/basic/login"/>
 
-		<intercept-url pattern="/community/write-article" access="ROLE_USER"/>
+	<!-- 	<intercept-url pattern="/community/write-article" access="ROLE_USER"/> -->
 		
 	</http>
 		<!-- /ADMIN 이런거 많이함 -->
@@ -66,7 +66,7 @@
 			"
 			authorities-by-username-query="
 				SELECT Identification USERID, RoleName AUTHORITIES
-				FROM UsersRolesTmp
+				FROM UsersRoles
 				WHERE Identification=?
 			"/>
 		</authentication-provider>

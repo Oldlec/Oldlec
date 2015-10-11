@@ -7,6 +7,11 @@ public class User {
 	private String Email;
 	private String Nickname;
 	private boolean IsValid;
+	
+	
+	
+	/*    */
+	
 
 	public int getNo() {
 		return No;

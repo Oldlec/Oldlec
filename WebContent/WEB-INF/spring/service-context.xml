@@ -17,10 +17,10 @@
     
  
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"></property>
-	    <property name="url" value="jdbc:sqlserver://db.newlecture.com;database=fantasticdb"></property>
-	    <property name="username" value="fantastic4"></property>
-	    <property name="password" value="1390"></property>
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+	    <property name="url" value="jdbc:mysql://mysite.ctsmwmmrbxyt.ap-northeast-1.rds.amazonaws.com:1433/mysite"></property>
+	    <property name="username" value="admin"></property>
+	    <property name="password" value="loved118"></property>
 	</bean>
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

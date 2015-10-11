@@ -24,6 +24,24 @@ public class OldlecAuthenticationSuccessHandler implements AuthenticationSuccess
    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) 
 		   throws IOException,  ServletException {
       
+/*	   String id = authentication.getName();
+	   User user = userDao.getUserById(id);
+	   
+	   String type = user.getDefaultRole(user.getNo());
+		 // String type = "ROLE_TEACHER";
+	   
+	   String targetUrl = "/account/login";
+	   
+	   if(type.equals("ROLE_ADMIN"))
+	   {
+		   targetUrl = "/main/index?authentication=Admin";
+	   
+		   RedirectStrategy redirectStategy = new DefaultRedirectStrategy();
+		   redirectStategy.sendRedirect(request, response, targetUrl);
+	   }
+	   
+	   */
+	   
 	/*	   String uid = authentication.getName();
 		   User user = userDao.getUserByUid(uid);
 		   

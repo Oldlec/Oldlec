@@ -38,7 +38,7 @@ public class ArticleController {
 		
 		/*get Articles by Page*/
 		List<Article> articleList = adao.getArticles(currentPage, "title", "");
-		int total = adao.getTotal();
+		int total = adao.getTotalOfArticles("IsValid", "");
 		
 		
 		/*for page numbers*/
@@ -124,11 +124,13 @@ public class ArticleController {
 	public void insertSample()
 	{
 		int result = 0;
-		int currentTotal = adao.getTotal();
+		int currentTotal = 101;
+	
+		
 		for(int i=currentTotal+1;i<currentTotal+100;i++){
 			Article newArticle = new Article();
 			newArticle.setNo(i);
-			newArticle.setCategoryNo(0);
+	
 			newArticle.setUserNo(1);
 			newArticle.setTitle((i+1)+"锅 力格");
 			newArticle.setContent((i+1)+"锅 力格");

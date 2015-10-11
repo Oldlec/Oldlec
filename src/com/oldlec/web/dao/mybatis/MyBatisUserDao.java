@@ -28,4 +28,12 @@ public class MyBatisUserDao implements UserDao{
 		return dao.getUsers(page, field, query);
 	}
 
+	@Override
+	public User getUserById(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 }

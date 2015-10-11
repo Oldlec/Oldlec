@@ -10,13 +10,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	
 	public Article getArticle(int no);
-	public int getTotal();
+	public int getTotalOfArticles(String column, String keyword);
 	public int writeArticle(Article newArticle);
 	 -->
    	
    		
 	<select id="getArticles" parameterType="hashmap" resultType = "com.oldlec.web.vo.Article">
-		SELECT *
+		
+SELECT * from (
+SELECT @RNUM := @RNUM + 1 AS ROWNUM, Ordered.*
+FROM
+  (
+	SELECT filtered_Articles.No, filtered_Articles.Title, Users.Nickname AS WriterName, filtered_Articles.UserNo AS WriterNo,
+		filtered_Articles.RegDate, filtered_Articles.View, filtered_Articles.Content,
+		IFNULL(AC.cntCmnt, 0) AS cntCmnt, IFNULL(ACL.IsLiked, 0) AS CntLiked, IFNULL(ACL.IsNotLiked, 0) AS CntNotLiked
+	FROM Users RIGHT OUTER JOIN
+		 (SELECT * from Articles where ${param2} Like '%${param3}%') AS filtered_Articles ON Users.No = filtered_Articles.UserNo LEFT OUTER JOIN
+			(SELECT  ArticleNo, COUNT(No) AS cntCmnt
+			FROM     Comments
+			GROUP BY ArticleNo) AS AC ON filtered_Articles.No = AC.ArticleNo LEFT OUTER JOIN
+			(SELECT  ArticleNo, SUM(IF(IsLiked = 1,1,0)) AS IsLiked, SUM(IF(IsLiked = 0, 1, 0)) AS IsNotLiked
+			FROM     ArticleVotes
+			GROUP BY ArticleNo) AS ACL ON filtered_Articles.No = ACL.ArticleNo
+    ORDER BY RegDate
+  ) AS Ordered,
+( SELECT @RNUM := 0 ) R) AS rowed
+where rowed.ROWNUM BETWEEN  1 + (#{param1,jdbcType=NUMERIC}-1)*10 
+							AND 10 * #{param1,jdbcType=NUMERIC}
+		
+		
+		<!-- SELECT *
 		FROM (
 			SELECT
 			ROW_NUMBER ( )  OVER (order by No ) AS RowNum,
@@ -26,30 +49,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE 
 			${param2} LIKE '%${param3}%' AND
 			RowNum BETWEEN  1 + (#{param1,jdbcType=NUMERIC}-1)*10 
-							AND 10 * #{param1,jdbcType=NUMERIC}
+							AND 10 * #{param1,jdbcType=NUMERIC} -->
+		
+	
 	</select>
 	   
 	<select id="getArticle" resultType = "com.oldlec.web.vo.Article">
 		SELECT * FROM ArticleView WHERE No = #{no,jdbcType=NUMERIC}
 	</select>
  
- 	<select id="getTotal" resultType = "int">
- 		<![CDATA[
- 			SELECT rows FROM sysindexes WHERE indid<2 AND id=object_id('[Articles]')
- 		]]>
- 	</select>
+ 	<select id="getTotalOfArticles" resultType = "int">
+		SELECT COUNT(No) As Total
+		FROM Articles 
+		WHERE ${param1} Like '%${param2}%';
+	</select>
  	
  	<insert id="writeArticle" parameterType="com.oldlec.web.vo.Article">
  		INSERT INTO Articles(
 			No,
-			CategoryNo,
 			UserNo,
 			Title,
 			Content
 		)
 		VALUES(
 			${no},
-			${categoryNo},
 			#{userNo},
 			#{title},
 			#{content}

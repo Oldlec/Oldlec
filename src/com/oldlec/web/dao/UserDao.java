@@ -11,4 +11,7 @@ public interface UserDao {
 	         String field,
 	         String query
 	         );
+	
+	public User getUserById(String id);
+
 }
