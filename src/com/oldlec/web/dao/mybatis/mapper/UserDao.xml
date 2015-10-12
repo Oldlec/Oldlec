@@ -13,6 +13,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getUsers" resultType = "com.oldlec.web.vo.User">
 		SELECT * FROM Users
 	</select>
+	
+		<select id="getUserByEmail"  parameterType ="String" resultType = "com.oldlec.web.vo.User">
+		SELECT * FROM Users WHERE Email = ${Email}
+	</select>
 	   
 <!-- 	<insert id="addUser" parameterType="com.oldlec.web.vo.User">
 		INSERT INTO USERS(ID, Password, RegDate)

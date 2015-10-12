@@ -16,13 +16,14 @@
 	
 		<form action="${ctxName}/j_spring_security_check" method="post" id="login-form">
 				<div id="input-set">
-				<label id="label-id">ID</label><input id="input-id" type="text" name="j_username"/>
-				<label id="label-password">Password</label><input id="input-pwd" type="text" name="j_password"/>
+					<label id="label-email">email</label><input id="input-email" type="text" name="j_username"/>
+					<label id="label-password">Password</label><input id="input-pwd" type="text" name="j_password"/>
 				</div>
 				<input id="sign-in-btn" type="submit" name="btn" value="login"/>
 			
 		</form>
-
+		
+		<p>Login Error msg : </p>
 
 </body>
 </html>

@@ -55,7 +55,18 @@ where rowed.ROWNUM BETWEEN  1 + (#{param1,jdbcType=NUMERIC}-1)*10
 	</select>
 	   
 	<select id="getArticle" resultType = "com.oldlec.web.vo.Article">
-		SELECT * FROM ArticleView WHERE No = #{no,jdbcType=NUMERIC}
+		SELECT filtered_Articles.No, filtered_Articles.Title, Users.Nickname AS WriterName, filtered_Articles.UserNo AS WriterNo,
+		filtered_Articles.RegDate, filtered_Articles.View, filtered_Articles.Content,
+		IFNULL(AC.cntCmnt, 0) AS cntCmnt, IFNULL(ACL.IsLiked, 0) AS CntLiked, IFNULL(ACL.IsNotLiked, 0) AS CntNotLiked
+	FROM Users RIGHT OUTER JOIN
+		 (SELECT * from Articles WHERE Articles.No = #{no,jdbcType=NUMERIC}) AS filtered_Articles ON Users.No = filtered_Articles.UserNo LEFT OUTER JOIN
+			(SELECT  ArticleNo, COUNT(No) AS cntCmnt
+			FROM     Comments
+			GROUP BY ArticleNo) AS AC ON filtered_Articles.No = AC.ArticleNo LEFT OUTER JOIN
+			(SELECT  ArticleNo, SUM(IF(IsLiked = 1,1,0)) AS IsLiked, SUM(IF(IsLiked = 0, 1, 0)) AS IsNotLiked
+			FROM     ArticleVotes
+			GROUP BY ArticleNo) AS ACL ON filtered_Articles.No = ACL.ArticleNo
+	
 	</select>
  
  	<select id="getTotalOfArticles" resultType = "int">

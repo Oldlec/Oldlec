@@ -1,16 +1,24 @@
 package com.oldlec.web.vo;
 
+import java.util.Date;
+
 public class User {
 	private int No;
-	private String Id;
+
 	private String PassWord;
 	private String Email;
 	private String Nickname;
 	private boolean IsValid;
 	
 	
+	/* User Role   */
+
+	private String defaultRole;
 	
-	/*    */
+	
+	
+	/*User Info*/
+	private Date regDate;
 	
 
 	public int getNo() {
@@ -19,12 +27,7 @@ public class User {
 	public void setNo(int no) {
 		No = no;
 	}
-	public String getId() {
-		return Id;
-	}
-	public void setId(String id) {
-		Id = id;
-	}
+
 	public String getPassWord() {
 		return PassWord;
 	}
@@ -49,4 +52,6 @@ public class User {
 	public void setIsValid(boolean isValid) {
 		IsValid = isValid;
 	}
+
+	
 }

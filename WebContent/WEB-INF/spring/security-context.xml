@@ -26,12 +26,20 @@
             default-target-url="/community/article-list"/> -->
             
             <form-login login-page="/account/login"
-            default-target-url="/main/index"
-            authentication-failure-url="/acocunt/login"
-            authentication-success-handler-ref="oldlecAuthenticationSuccessHandler"
+            default-target-url="/success"
+            authentication-failure-url="/fail"
             />
 	
-		<logout logout-success-url ="/basic/login"/>
+	<!-- 	      <form-login login-page="/account/login"
+            default-target-url="/acocunt/login"
+            authentication-failure-url="/acocunt/login"
+            authentication-success-handler-ref="oldlecAuthenticationSuccessHandler"
+            /> -->
+	
+	
+	
+	
+		<logout logout-success-url ="/account/login"/>
 
 	<!-- 	<intercept-url pattern="/community/write-article" access="ROLE_USER"/> -->
 		
@@ -60,15 +68,19 @@
 		<authentication-provider>
 			<jdbc-user-service data-source-ref="dataSource"
 			users-by-username-query="
-				SELECT Identification USERID, Pwd PASSWORD, IsValid ENABLED
+				SELECT Email As USERNAME, password PASSWORD, IsValid ENABLED
 				FROM Users
-				WHERE Identification=?
+				WHERE Email=?
 			"
 			authorities-by-username-query="
-				SELECT Identification USERID, RoleName AUTHORITIES
-				FROM UsersRoles
-				WHERE Identification=?
+				SELECT 
+					 Users.Email AS USERNAME,
+					 UserRoles.RoleName AS AUTHORITIES
+				from UserRoles LEFT OUTER JOIN Users
+				ON UserRoles.UserNo = Users.No
+				WHERE  Users.Email  =?
 			"/>
+			   
 		</authentication-provider>
 	</authentication-manager>
 	

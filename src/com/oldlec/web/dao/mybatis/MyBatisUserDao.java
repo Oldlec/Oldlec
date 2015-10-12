@@ -29,7 +29,7 @@ public class MyBatisUserDao implements UserDao{
 	}
 
 	@Override
-	public User getUserById(String id) {
+	public User getUserByEmail(String email) {
 		// TODO Auto-generated method stub
 		return null;
 	}

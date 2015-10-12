@@ -3,19 +3,20 @@ package com.oldlec.web.vo;
 import java.util.Date;
 
 public class UserInfo {
-	private int UserNo;
-	private Date RegDate;
-	
+	private int userNo;
+	private Date regDate;
 	public int getUserNo() {
-		return UserNo;
+		return userNo;
 	}
 	public void setUserNo(int userNo) {
-		UserNo = userNo;
+		this.userNo = userNo;
 	}
 	public Date getRegDate() {
-		return RegDate;
+		return regDate;
 	}
 	public void setRegDate(Date regDate) {
-		RegDate = regDate;
-	} 
+		this.regDate = regDate;
+	}
+	
+
 }

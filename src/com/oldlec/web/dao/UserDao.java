@@ -12,6 +12,7 @@ public interface UserDao {
 	         String query
 	         );
 	
-	public User getUserById(String id);
+	public User getUserByEmail(String email);
+	
 
 }

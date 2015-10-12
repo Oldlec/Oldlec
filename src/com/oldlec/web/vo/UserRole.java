@@ -1,20 +1,23 @@
 package com.oldlec.web.vo;
 
 public class UserRole {
-	private int UserNo;
-	private String RoleName;
+	private int userNo;
+	private String roleName;
 	
-
+	
 	public int getUserNo() {
-		return UserNo;
+		return userNo;
 	}
 	public void setUserNo(int userNo) {
-		UserNo = userNo;
+		this.userNo = userNo;
 	}
 	public String getRoleName() {
-		return RoleName;
+		return roleName;
 	}
 	public void setRoleName(String roleName) {
-		RoleName = roleName;
+		this.roleName = roleName;
 	}
+	
+
+	
 }
